@@ -68,11 +68,11 @@
             foreach ($result->tracks->items as $items) {
                 $check = false;
                 foreach ($items->album->artists as $artists) {
-                    if (strpos(strtolower($artists->name), strtolower($search)) !== false) {
+                    if (strpos($artists->name, $search) !== false) {
                         $check = true;
                     }
                 }
-                if (strpos(strtolower($items->album->name), strtolower($search)) !== false || $check) {
+                if (strpos($items->album->name, $search) !== false || $check) {
                     $found_count++;
                 }
             }
@@ -82,12 +82,12 @@
             foreach ($result->tracks->items as $items) {
                 $check = false;
                 foreach ($items->album->artists as $artists) {
-                    if (strpos(strtolower($artists->name), strtolower($search)) !== false) {
+                    if (strpos($artists->name, $search) !== false) {
                         $check = true;
                     }
                 }
-                if (strpos(strtolower($items->album->name), strtolower($search)) !== false || $check) {
-                    $check_all = false;
+                if (strpos($items->album->name, $search) !== false || $check) {
+                    $checksong = false;
                     echo '<div class="card" style="width: 30%;">';
                     foreach ($items->album->images as $image) {
                         if ($image->height == 640) {
